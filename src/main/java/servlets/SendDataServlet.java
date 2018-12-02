@@ -2,6 +2,8 @@ package servlets;
 
 import bean.MessageBean;
 import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,6 +17,9 @@ public class SendDataServlet extends HttpServlet {
 
     @Inject
     MessageBean messageBean;
+
+    @PersistenceContext
+    EntityManager entityManager;
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
