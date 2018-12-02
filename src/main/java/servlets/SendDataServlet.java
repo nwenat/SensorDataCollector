@@ -1,5 +1,7 @@
 package servlets;
 
+import bean.MessageBean;
+import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,9 +13,11 @@ import java.io.IOException;
 @WebServlet(name = "/SendData", urlPatterns = "/SendData")
 public class SendDataServlet extends HttpServlet {
 
+    @Inject
+    MessageBean messageBean;
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String message = req.toString();
 
 
         StringBuilder buffer = new StringBuilder();
@@ -24,8 +28,7 @@ public class SendDataServlet extends HttpServlet {
         }
         String data = buffer.toString();
 
-        String answer = "dziaa!!";
+        String answer = messageBean.getMessage();
         resp.getWriter().print(answer + "  " + data);
     }
-
 }

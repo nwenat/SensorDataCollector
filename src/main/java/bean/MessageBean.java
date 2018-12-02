@@ -1,15 +1,11 @@
 package bean;
 
+import javax.ejb.Stateless;
 
-//import javax.ejb.Singleton;
-
-
-
-
+@Stateless
 public class MessageBean {
 
-    private String message = "***";
-    //implements Serializable
+    private String message = "New Message from BEAN";
 
     public String getMessage() {
         return message;

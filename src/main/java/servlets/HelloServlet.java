@@ -1,7 +1,7 @@
 package servlets;
 
 import bean.MessageBean;
-//import javax.inject.Inject;
+import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,8 +13,8 @@ import java.io.IOException;
 public class HelloServlet extends HttpServlet {
 
 
-//    @Inject
-    MessageBean messageBean = new MessageBean();
+    @Inject
+    MessageBean messageBean;
 
 
 
