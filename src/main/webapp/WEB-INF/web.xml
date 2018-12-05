@@ -10,4 +10,22 @@
     <class-name>org.h2.jdbcx.JdbcDataSource</class-name>
     <url>jdbc:h2:file:/home/natalka/IdeaProjects/SensorDataCollector/UserMetrics.h2</url>
   </data-source>
+  
+  <context-param>
+    <param-name>javax.faces.PROJECT_STAGE</param-name>
+    <param-value>Development</param-value>
+  </context-param>
+  
+  <servlet>
+    <servlet-name>Faces Servlet</servlet-name>
+    <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Faces Servlet</servlet-name>
+    <url-pattern>*.xhtml</url-pattern>
+  </servlet-mapping>
+  <welcome-file-list>
+    <welcome-file>hello.xhtml</welcome-file>
+  </welcome-file-list>
 </web-app>

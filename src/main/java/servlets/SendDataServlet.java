@@ -2,10 +2,7 @@ package servlets;
 
 import bean.DataBean;
 import data.UserMetrics;
-
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,9 +19,6 @@ public class SendDataServlet extends HttpServlet {
     @Inject
     DataBean DataBean;
 
-    @PersistenceContext
-    EntityManager entityManager;
-
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -37,14 +31,18 @@ public class SendDataServlet extends HttpServlet {
         }
         String data = buffer.toString();
 
-        DataBean.save();
 
-//
-//        Gson gson = new Gson();
-//        userMetrics = gson.fromJson(reader, UserMetrics.class);
-//        DataBean.save(userMetrics);
+        try {
+            DataBean.save();
+            DataBean.save();
+            DataBean.save();
+            DataBean.save();
+            DataBean.save();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
-        resp.getWriter().print("ok");
+        resp.getWriter().print("ok" + data);
     }
 }
