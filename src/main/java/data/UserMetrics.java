@@ -12,9 +12,9 @@ public class UserMetrics {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    @Column(name = "dataTime")
-//    @NotNull
-//    private LocalDateTime dateTime;
+    @Column(name = "dataTime")
+    @NotNull
+    private LocalDateTime dateTime;
 
     @Column(name = "INCOMING")
     @NotNull
@@ -39,12 +39,17 @@ public class UserMetrics {
     public UserMetrics() {
     }
 
-    public UserMetrics(@NotNull int incoming, @NotNull int outgoing, @NotNull int missed, @NotNull int inboxSMS, @NotNull int outboxSMS) {
+    public UserMetrics(@NotNull LocalDateTime dateTime, @NotNull int incoming, @NotNull int outgoing, @NotNull int missed, @NotNull int inboxSMS, @NotNull int outboxSMS) {
+        this.dateTime = dateTime;
         this.incoming = incoming;
         this.outgoing = outgoing;
         this.missed = missed;
         this.inboxSMS = inboxSMS;
         this.outboxSMS = outboxSMS;
+    }
+
+    public LocalDateTime getDateTime() {
+        return dateTime;
     }
 
     public Long getId() {
@@ -71,8 +76,8 @@ public class UserMetrics {
         return outboxSMS;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
     }
 
     public void setIncoming(int incoming) {

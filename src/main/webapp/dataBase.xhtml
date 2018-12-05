@@ -18,7 +18,7 @@
 
     <ul>
         <ui:repeat value="#{dataBean.userMetrics}" var="usr">
-            <li>Incoming - #{usr.incoming}; Outgoing - #{usr.outgoing}; Missed - #{usr.missed}; Outbox SMS - #{usr.outboxSMS}; Inbox SMS - #{usr.inboxSMS};</li>
+            <li>#{usr.dateTime}; Incoming - #{usr.incoming}; Outgoing - #{usr.outgoing}; Missed - #{usr.missed}; Outbox SMS - #{usr.outboxSMS}; Inbox SMS - #{usr.inboxSMS};</li>
         </ui:repeat>
     </ul>
 
