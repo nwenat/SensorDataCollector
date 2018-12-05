@@ -2,6 +2,7 @@ package data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "USER_METRICS")
@@ -35,6 +36,9 @@ public class UserMetrics {
     @NotNull
     private int outboxSMS;
 
+    public UserMetrics() {
+    }
+
     public UserMetrics(@NotNull int incoming, @NotNull int outgoing, @NotNull int missed, @NotNull int inboxSMS, @NotNull int outboxSMS) {
         this.incoming = incoming;
         this.outgoing = outgoing;
@@ -65,5 +69,29 @@ public class UserMetrics {
 
     public int getOutboxSMS() {
         return outboxSMS;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setIncoming(int incoming) {
+        this.incoming = incoming;
+    }
+
+    public void setOutgoing(int outgoing) {
+        this.outgoing = outgoing;
+    }
+
+    public void setMissed(int missed) {
+        this.missed = missed;
+    }
+
+    public void setInboxSMS(int inboxSMS) {
+        this.inboxSMS = inboxSMS;
+    }
+
+    public void setOutboxSMS(int outboxSMS) {
+        this.outboxSMS = outboxSMS;
     }
 }

@@ -6,10 +6,14 @@ import javax.inject.Named;
 @Named
 @RequestScoped
 public class User {
-    public String name = "ktos";
+
+    private String name = "kicia";
 
     public User(String name) {
         this.name = name;
+    }
+
+    public User() {
     }
 
     public String getName() {

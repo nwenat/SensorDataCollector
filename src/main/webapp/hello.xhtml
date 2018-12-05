@@ -10,17 +10,28 @@
 
 <h:body>
 <f:view>
-    <h:outputLabel value="Hello, world from JSF"/>
+    <h:outputLabel value="User Data Metrics"/>
+    <h:outputLabel value="Last record:"/>
+    <h:outputLabel value="Statistics"/>
+
+    <br>
+
+    </br>
+
+    <br>
+
+    </br>
+
 </f:view>
 
-<form action="dataBase.xhtml">
+<h:form >
     <label>Name:</label>
-    <h:inputText value="#{user.name}" />
+    <h:inputText value="#{user.name}"/>
 
-    <h:commandButton value="go to welcome page"/>
+    <h:commandButton value="Show all records" action="dataBase.xhtml"/>
 
-</form>
+</h:form>
 
-<!--<h:outputText value="#{DataBean.name}" />-->
+    <h:outputText value="#{dataBean.localDateTime}" />
 </h:body>
 </html>

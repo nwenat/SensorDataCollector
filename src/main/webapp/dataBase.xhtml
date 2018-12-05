@@ -5,21 +5,23 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-<head>
-    <title>Data Base</title>
-</head>
+<h:head>
+    <title>All records</title>
+</h:head>
 
-<body>
-<f:view>
-    <h:outputLabel value="Hello, world"/>
-</f:view>
+<h:body>
 
-<h:outputText value="#{user.name}" />
-<h:dataTable>
-    <h:column>
+    <!--<h:outputText value="#{user.name}" />-->
 
-    </h:column>
-</h:dataTable>
 
-</body>
+    <p>All of user records</p>
+
+    <ul>
+        <ui:repeat value="#{dataBean.userMetrics}" var="usr">
+            <li>Incoming - #{usr.incoming}; Outgoing - #{usr.outgoing}; Missed - #{usr.missed}; Outbox SMS - #{usr.outboxSMS}; Inbox SMS - #{usr.inboxSMS};</li>
+        </ui:repeat>
+    </ul>
+
+
+</h:body>
 </html>

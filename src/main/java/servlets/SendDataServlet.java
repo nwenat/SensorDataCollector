@@ -2,6 +2,8 @@ package servlets;
 
 import bean.DataBean;
 import data.UserMetrics;
+import org.json.JSONObject;
+
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,7 +16,7 @@ import java.io.IOException;
 @WebServlet(name = "/SendData", urlPatterns = "/SendData")
 public class SendDataServlet extends HttpServlet {
 
-    private UserMetrics userMetrics;
+    private UserMetrics userMetrics = new UserMetrics();
 
     @Inject
     DataBean DataBean;
@@ -30,14 +32,20 @@ public class SendDataServlet extends HttpServlet {
             buffer.append(line);
         }
         String data = buffer.toString();
+        JSONObject jsonData = new JSONObject(data);
+
+        System.out.println(jsonData.toString());
+        System.out.println(jsonData.get("dateTime").toString());
+
+        userMetrics.setInboxSMS(jsonData.getInt("inboxSMS"));
+        userMetrics.setOutboxSMS(jsonData.getInt("outboxSMS"));
+        userMetrics.setIncoming(jsonData.getInt("incoming"));
+        userMetrics.setOutgoing(jsonData.getInt("outgoing"));
+        userMetrics.setMissed(jsonData.getInt("missed"));
 
 
         try {
-            DataBean.save();
-            DataBean.save();
-            DataBean.save();
-            DataBean.save();
-            DataBean.save();
+            DataBean.save(userMetrics);
         } catch (Exception e) {
             e.printStackTrace();
         }
