@@ -1,6 +1,6 @@
 package servlets;
 
-import bean.MessageBean;
+import bean.DataBean;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,15 +14,15 @@ public class HelloServlet extends HttpServlet {
 
 
     @Inject
-    MessageBean messageBean;
+    DataBean messageBean;
 
 
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String toPrint = "test test";
-        String toPrint2 = messageBean.getMessage();
-        resp.getWriter().print(toPrint + "\n\r" + toPrint2);
+
+        resp.getWriter().print(toPrint);
     }
 
 }

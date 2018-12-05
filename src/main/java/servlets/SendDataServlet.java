@@ -1,6 +1,8 @@
 package servlets;
 
-import bean.MessageBean;
+import bean.DataBean;
+import data.UserMetrics;
+
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,8 +17,10 @@ import java.io.IOException;
 @WebServlet(name = "/SendData", urlPatterns = "/SendData")
 public class SendDataServlet extends HttpServlet {
 
+    private UserMetrics userMetrics;
+
     @Inject
-    MessageBean messageBean;
+    DataBean DataBean;
 
     @PersistenceContext
     EntityManager entityManager;
@@ -33,7 +37,14 @@ public class SendDataServlet extends HttpServlet {
         }
         String data = buffer.toString();
 
-        String answer = messageBean.getMessage();
-        resp.getWriter().print(answer + "  " + data);
+        DataBean.save();
+
+//
+//        Gson gson = new Gson();
+//        userMetrics = gson.fromJson(reader, UserMetrics.class);
+//        DataBean.save(userMetrics);
+
+
+        resp.getWriter().print("ok");
     }
 }

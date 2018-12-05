@@ -36,4 +36,12 @@ public class UserMetrics {
     @NotNull
     private int outboxSMS;
 
+    public UserMetrics(@NotNull LocalDateTime dateTime, @NotNull int incoming, @NotNull int outgoing, @NotNull int missed, @NotNull int inboxSMS, @NotNull int outboxSMS) {
+        this.dateTime = dateTime;
+        this.incoming = incoming;
+        this.outgoing = outgoing;
+        this.missed = missed;
+        this.inboxSMS = inboxSMS;
+        this.outboxSMS = outboxSMS;
+    }
 }
