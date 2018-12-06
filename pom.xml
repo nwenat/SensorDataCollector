@@ -42,6 +42,16 @@
       <artifactId>json</artifactId>
       <version>20180813</version>
     </dependency>
+    <dependency>
+      <groupId>org.chartistjsf</groupId>
+      <artifactId>ChartistJSF</artifactId>
+      <version>3.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.primefaces</groupId>
+      <artifactId>primefaces</artifactId>
+      <version>6.2</version>
+    </dependency>
   </dependencies>
 
   <build>

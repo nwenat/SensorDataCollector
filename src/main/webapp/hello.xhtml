@@ -3,7 +3,8 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui" xmlns:ct="http://www.chartistjsf.org/charts">
 <h:head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Your statistic</title>
@@ -29,13 +30,20 @@
     <br>
     </br>
 
+    <div>
+        <ct:chart id="barChart" type="bar" model="#{barChartDataBean.barChartModel}">
+            <p:ajax event="itemSelect" listener="#{barChartDataBean.barItemSelect}" update="barChartMessage"  />
+        </ct:chart>
+        <p:message id="barChartMessage" for="barChart" showDetail="true" />
+    </div>
+
+    <br>
+    </br>
 
 </f:view>
 
 <h:form >
-
     <h:commandButton value="Show all records" action="showAll"/>
-
 </h:form>
 
 </h:body>
