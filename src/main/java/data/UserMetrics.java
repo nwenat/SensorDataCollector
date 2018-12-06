@@ -3,6 +3,7 @@ package data;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 @Table(name = "USER_METRICS")
@@ -98,5 +99,10 @@ public class UserMetrics {
 
     public void setOutboxSMS(int outboxSMS) {
         this.outboxSMS = outboxSMS;
+    }
+
+    public String getDataString () {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd   HH:mm:ss");
+        return dateTime.format(formatter);
     }
 }

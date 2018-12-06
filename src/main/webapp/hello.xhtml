@@ -20,7 +20,7 @@
     <br>
 
             <ui:repeat value="#{dataBean.lastMetric}" var="usr">
-                <li>#{usr.dateTime}; Incoming - #{usr.incoming}; Outgoing - #{usr.outgoing}; Missed - #{usr.missed}; Outbox SMS - #{usr.outboxSMS}; Inbox SMS - #{usr.inboxSMS};</li>
+                <li>#{usr.dataString}; Incoming - #{usr.incoming}; Outgoing - #{usr.outgoing}; Missed - #{usr.missed}; Outbox SMS - #{usr.outboxSMS}; Inbox SMS - #{usr.inboxSMS};</li>
             </ui:repeat>
 
     </br>
