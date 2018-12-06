@@ -13,18 +13,13 @@
 
 <h:body>
 
-    <!--<h:outputText value="#{user.name}" />-->
-
-
     <p>All of user records</p>
 
-    <!--<ul>-->
-        <!--<ui:repeat value="#{dataBean.userMetrics}" var="usr">-->
-            <!--<li>#{usr.dateTime}; Incoming - #{usr.incoming}; Outgoing - #{usr.outgoing}; Missed - #{usr.missed}; Outbox SMS - #{usr.outboxSMS}; Inbox SMS - #{usr.inboxSMS};</li>-->
-        <!--</ui:repeat>-->
-    <!--</ul>-->
-
     <h:dataTable value="#{dataBean.userMetrics}" var="metrics" styleClass="metrics-table">
+        <h:column>
+            <f:facet name="header">Number</f:facet>
+            #{metrics.id}
+        </h:column>
         <h:column>
             <f:facet name="header">Date and time</f:facet>
             <h:outputText value="#{metrics.dateTime}">
