@@ -1,0 +1,8 @@
+.metrics-table {
+    border-collapse: collapse;
+}
+
+.metrics-table td, .metrics-table th {
+    padding: 4px;
+    border: 1px solid #CCC;
+}

@@ -6,7 +6,9 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>All records</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
 </h:head>
 
 <h:body>
@@ -16,12 +18,40 @@
 
     <p>All of user records</p>
 
-    <ul>
-        <ui:repeat value="#{dataBean.userMetrics}" var="usr">
-            <li>#{usr.dateTime}; Incoming - #{usr.incoming}; Outgoing - #{usr.outgoing}; Missed - #{usr.missed}; Outbox SMS - #{usr.outboxSMS}; Inbox SMS - #{usr.inboxSMS};</li>
-        </ui:repeat>
-    </ul>
+    <!--<ul>-->
+        <!--<ui:repeat value="#{dataBean.userMetrics}" var="usr">-->
+            <!--<li>#{usr.dateTime}; Incoming - #{usr.incoming}; Outgoing - #{usr.outgoing}; Missed - #{usr.missed}; Outbox SMS - #{usr.outboxSMS}; Inbox SMS - #{usr.inboxSMS};</li>-->
+        <!--</ui:repeat>-->
+    <!--</ul>-->
 
+    <h:dataTable value="#{dataBean.userMetrics}" var="metrics" styleClass="metrics-table">
+        <h:column>
+            <f:facet name="header">Date and time</f:facet>
+            <h:outputText value="#{metrics.dateTime}">
+                <!--<f:convertDateTime pattern="dd-mm-yyyy"/>-->
+            </h:outputText>
+        </h:column>
+        <h:column>
+            <f:facet name="header">Incoming call</f:facet>
+            #{metrics.incoming}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Outgoing call</f:facet>
+            #{metrics.outgoing}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Missed call</f:facet>
+            #{metrics.missed}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Sending SMS</f:facet>
+            #{metrics.outboxSMS}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Inbox SMS</f:facet>
+            #{metrics.inboxSMS}
+        </h:column>
+    </h:dataTable>
 
 </h:body>
 </html>
