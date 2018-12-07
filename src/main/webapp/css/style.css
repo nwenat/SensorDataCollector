@@ -7,6 +7,18 @@
     border: 1px solid #CCC;
 }
 
-div#myBarChart.myBarChart {
-    width: 60%;
+#heart {
+    text-align: center;
+}
+
+h3 {
+    margin: 10px auto 20px;
+}
+
+label {
+    margin: 10px;
+}
+
+commandButton {
+color: aquamarine;
 }

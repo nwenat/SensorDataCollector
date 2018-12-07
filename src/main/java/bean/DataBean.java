@@ -39,11 +39,17 @@ public class DataBean implements Serializable{
     public UserMetrics getLastMetric() {
         final Query query = entityManager.createQuery("select u from UserMetrics u order by u.id desc");
         query.setMaxResults(1);
-        return (UserMetrics)query.getResultList().get(0);
+        if (! query.getResultList().isEmpty()) {
+            return (UserMetrics)query.getResultList().get(0);
+        }
+        return null;
     }
 
     public Long getNumberOfElements() {
         final Query query = entityManager.createQuery("select count(u) from UserMetrics u");
+        if (! query.getResultList().isEmpty()) {
+            return null;
+        }
         return (Long) query.getResultList().get(0);
     }
 

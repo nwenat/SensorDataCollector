@@ -13,9 +13,10 @@
 
 <h:body>
 
-    <p>All of user records</p>
+    <div id="heart" style="text-align: center">
+        <h3 style="margin: 30px auto">All of user records</h3>
 
-    <h:dataTable value="#{dataBean.userMetrics}" var="metrics" styleClass="metrics-table">
+    <h:dataTable value="#{dataBean.userMetrics}" var="metrics" styleClass="metrics-table" style="margin: 20px auto">
         <h:column>
             <f:facet name="header">Number</f:facet>
             #{metrics.id}
@@ -46,11 +47,11 @@
             #{metrics.inboxSMS}
         </h:column>
     </h:dataTable>
-    <br></br>
 
     <h:form >
-        <h:commandButton value="BACK" action="showAll"/>
+        <h:commandButton value="BACK" action="showAll" style="background-color: cornflowerblue"/>
     </h:form>
+    </div>
 
 </h:body>
 </html>

@@ -13,38 +13,29 @@
 
 <h:body>
 <f:view>
-    <h:outputLabel value="User Data Metrics"/>
-    <br>
+    <div id="heart" style="text-align: center">
+        <h3 style="margin: 30px auto">User Data Metrics</h3>
+        <h:outputLabel value="Last record:" />
 
-    </br>
-    <h:outputLabel value="Last record:"/>
-    <br>
+        <ui:repeat value="#{dataBean.lastMetric}" var="usr" rendered="#{dataBean.lastMetric != null}">
+            <li>#{usr.dataString}; Incoming - #{usr.incoming}; Outgoing - #{usr.outgoing}; Missed - #{usr.missed}; Outbox SMS - #{usr.outboxSMS}; Inbox SMS - #{usr.inboxSMS};</li>
+        </ui:repeat>
 
-            <ui:repeat value="#{dataBean.lastMetric}" var="usr">
-                <li>#{usr.dataString}; Incoming - #{usr.incoming}; Outgoing - #{usr.outgoing}; Missed - #{usr.missed}; Outbox SMS - #{usr.outboxSMS}; Inbox SMS - #{usr.inboxSMS};</li>
-            </ui:repeat>
+        <h:outputText value="There is no records." rendered="#{empty dataBean.lastMetric}" style="margin: 10px auto"/>
 
-    </br>
+        <h:outputLabel value="Statistics"/>
 
-    <h:form >
-        <h:commandButton value="Show all records" action="showAll"/>
-    </h:form>
+        <div style="width: 60%; margin: 30px auto 0px">
+            <ct:chart id="barChart" type="bar" model="#{barChartDataBean.barChartModel}">
+                <p:ajax event="itemSelect" listener="#{barChartDataBean.barItemSelect}" update="barChartMessage"  />
+            </ct:chart>
+            <p:message id="barChartMessage" for="barChart" showDetail="true" />
+        </div>
 
-    <h:outputLabel value="Statistics"/>
-
-    <br>
-    </br>
-
-    <div style="width: 60%">
-        <ct:chart id="barChart" type="bar" model="#{barChartDataBean.barChartModel}">
-            <p:ajax event="itemSelect" listener="#{barChartDataBean.barItemSelect}" update="barChartMessage"  />
-        </ct:chart>
-        <p:message id="barChartMessage" for="barChart" showDetail="true" />
+        <h:form >
+            <h:commandButton value="Show all records" action="showAll" style="background-color: cornflowerblue"/>
+        </h:form>
     </div>
-
-    <br>
-    </br>
-
 </f:view>
 
 </h:body>

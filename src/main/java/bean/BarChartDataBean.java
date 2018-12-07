@@ -17,13 +17,10 @@ public class BarChartDataBean {
     @Inject
     private DataBean dataBean;
 
-
     private BarChartModel barChartModel = null;
     public void createBarModel() {
-        Long numberOfRows = dataBean.getNumberOfElements();
 
         barChartModel = new BarChartModel();
-
         barChartModel.setAspectRatio(AspectRatio.GOLDEN_SECTION);
 
         BarChartSeries series1 = new BarChartSeries();
@@ -38,7 +35,6 @@ public class BarChartDataBean {
         series5.setName("Outbox SMS");
 
         List<UserMetrics> userMetricsList = dataBean.getUserMetrics();
-
         for(UserMetrics metric : userMetricsList) {
 
             barChartModel.addLabel(metric.getDataString());
