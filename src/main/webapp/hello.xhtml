@@ -13,19 +13,19 @@
 
 <h:body>
 <f:view>
-    <div id="heart" style="text-align: center">
-        <h3 style="margin: 30px auto">User Data Metrics</h3>
+    <div id="heart">
+        <h3>User Data Metrics</h3>
         <h:outputLabel value="Last record:" />
 
         <ui:repeat value="#{dataBean.lastMetric}" var="usr" rendered="#{dataBean.lastMetric != null}">
             <li>#{usr.dataString}; Incoming - #{usr.incoming}; Outgoing - #{usr.outgoing}; Missed - #{usr.missed}; Outbox SMS - #{usr.outboxSMS}; Inbox SMS - #{usr.inboxSMS};</li>
         </ui:repeat>
 
-        <h:outputText value="There is no records." rendered="#{empty dataBean.lastMetric}" style="margin: 10px auto"/>
+        <h:outputText value="There are no records." styleClass="noRecords" rendered="#{empty dataBean.lastMetric}"/>
 
         <h:outputLabel value="Statistics"/>
 
-        <div style="width: 60%; margin: 30px auto 0px">
+        <div class="chart" style="display: #{empty dataBean.lastMetric ? 'none': 'block'}">
             <ct:chart id="barChart" type="bar" model="#{barChartDataBean.barChartModel}">
                 <p:ajax event="itemSelect" listener="#{barChartDataBean.barItemSelect}" update="barChartMessage"  />
             </ct:chart>
@@ -33,7 +33,7 @@
         </div>
 
         <h:form >
-            <h:commandButton value="Show all records" action="showAll" style="background-color: cornflowerblue"/>
+            <h:commandButton styleClass="button" value="Show all records" action="showAll"/>
         </h:form>
     </div>
 </f:view>

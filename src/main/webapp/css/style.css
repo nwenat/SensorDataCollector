@@ -1,5 +1,6 @@
 .metrics-table {
     border-collapse: collapse;
+    margin: 20px auto;
 }
 
 .metrics-table td, .metrics-table th {
@@ -7,18 +8,27 @@
     border: 1px solid #CCC;
 }
 
+div.chart {
+    width: 60%;
+    margin: 30px auto 0px;
+}
+
 #heart {
     text-align: center;
 }
 
 h3 {
-    margin: 10px auto 20px;
+    margin: 30px auto;
+}
+
+.noRecords {
+    margin: 10px auto
 }
 
 label {
     margin: 10px;
 }
 
-commandButton {
-color: aquamarine;
+.button {
+background-color: lightseagreen;
 }
