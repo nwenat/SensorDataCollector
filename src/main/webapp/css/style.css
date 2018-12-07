@@ -6,3 +6,7 @@
     padding: 4px;
     border: 1px solid #CCC;
 }
+
+div#myBarChart.myBarChart {
+    width: 60%;
+}
