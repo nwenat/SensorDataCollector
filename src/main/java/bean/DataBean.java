@@ -1,7 +1,6 @@
 package bean;
 
 import data.UserMetrics;
-
 import javax.annotation.Resource;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
@@ -16,8 +15,6 @@ import java.util.List;
 @Named
 @SessionScoped
 public class DataBean implements Serializable{
-
-    private LocalDateTime dateToStatistics;
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -45,19 +42,31 @@ public class DataBean implements Serializable{
         return null;
     }
 
-    public Long getNumberOfElements() {
-        final Query query = entityManager.createQuery("select count(u) from UserMetrics u");
+    public List<UserMetrics> getMetricsBetween(LocalDateTime after, LocalDateTime before) {
+        final Query query = entityManager.createQuery("select u from UserMetrics u where u.dateTime between :after and :before");
+        query.setParameter("after", after);
+        query.setParameter("before", before);
         if (! query.getResultList().isEmpty()) {
-            return null;
+            return query.getResultList();
         }
-        return (Long) query.getResultList().get(0);
+        return null;
     }
 
-    public LocalDateTime getDateToStatistics() {
-        return dateToStatistics;
+    public List<UserMetrics> getMetricsAfter(LocalDateTime after) {
+        final Query query = entityManager.createQuery("select u from UserMetrics u where u.dateTime >= :after");
+        query.setParameter("after", after);
+        if (! query.getResultList().isEmpty()) {
+            return query.getResultList();
+        }
+        return null;
     }
 
-    public void setDateToStatistics(LocalDateTime dateToStatistics) {
-        this.dateToStatistics = dateToStatistics;
+    public List<UserMetrics> getMetricsBefore(LocalDateTime before) {
+        final Query query = entityManager.createQuery("select u from UserMetrics u where u.dateTime <= :before");
+        query.setParameter("before", before);
+        if (! query.getResultList().isEmpty()) {
+            return query.getResultList();
+        }
+        return null;
     }
 }

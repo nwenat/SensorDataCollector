@@ -26,10 +26,10 @@
         <h:outputLabel value="Statistics"/>
 
         <div class="chart" style="display: #{empty dataBean.lastMetric ? 'none': 'block'}">
-            <ct:chart id="barChart" type="bar" model="#{barChartDataBean.barChartModel}">
-                <p:ajax event="itemSelect" listener="#{barChartDataBean.barItemSelect}" update="barChartMessage"  />
+            <ct:chart id="lineChart" type="line" model="#{lineChartBean.lineChartModel}">
+                <p:ajax event="itemSelect" listener="#{lineChartBean.itemSelect}" update="lineChartMessage"  />
             </ct:chart>
-            <p:message id="barChartMessage" for="barChart" showDetail="true" />
+            <p:message id="lineChartMessage" for="lineChart" showDetail="true" />
         </div>
 
         <h:form >

@@ -102,7 +102,7 @@ public class UserMetrics {
     }
 
     public String getDataString () {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd\tHH:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         return dateTime.format(formatter);
     }
 }
