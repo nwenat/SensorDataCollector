@@ -10,11 +10,16 @@ import javax.persistence.Query;
 import javax.transaction.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Named
 @SessionScoped
 public class DataBean implements Serializable{
+
+    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    private LocalDateTime afterDate = null;
+    private LocalDateTime beforeDate = null;
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -68,5 +73,23 @@ public class DataBean implements Serializable{
             return query.getResultList();
         }
         return null;
+    }
+
+    public LocalDateTime getAfterDate() {
+        return afterDate;
+    }
+
+    public void setAfterDate(String after) {
+        this.afterDate = LocalDateTime.parse(after,formatter);
+//        afterDate = LocalDateTime.parse("2018-12-07 21:02:40", formatter);
+//        this.afterDate = after;
+    }
+
+    public LocalDateTime getBeforeDate() {
+        return beforeDate;
+    }
+
+    public void setBeforeDate(String before) {
+        this.beforeDate = LocalDateTime.parse(before,formatter);
     }
 }

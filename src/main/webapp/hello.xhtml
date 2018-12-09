@@ -20,10 +20,26 @@
         <ui:repeat value="#{dataBean.lastMetric}" var="usr" rendered="#{dataBean.lastMetric != null}">
             <li>#{usr.dataString}; Incoming - #{usr.incoming}; Outgoing - #{usr.outgoing}; Missed - #{usr.missed}; Outbox SMS - #{usr.outboxSMS}; Inbox SMS - #{usr.inboxSMS};</li>
         </ui:repeat>
-
+        <br>
         <h:outputText value="There are no records." styleClass="noRecords" rendered="#{empty dataBean.lastMetric}"/>
-
+        </br>
         <h:outputLabel value="Statistics"/>
+
+
+
+        <!--<h:form>-->
+            <!--<h:panelGrid columns="3">-->
+                <!--<h:outputLabel for="AfterDate" value="From:"/>-->
+                <!--<h:inputText type="text" id="AfterDate" value="#{dataBean.afterDate}">-->
+                             <!--&lt;!&ndash;converterMessage="Please enter a valid date and time. For example 2018-12-07 13:20:10">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<f:convertDateTime pattern="yyyy-MM-dd HH:mm:ss"/>&ndash;&gt;-->
+                <!--</h:inputText>-->
+                <!--<h:message for="AfterDate"/>-->
+                <!--<h:commandButton value="Submit"/>-->
+            <!--</h:panelGrid>-->
+        <!--</h:form>-->
+
+        <!--<h:outputLabel value="#{dataBean.afterDate}" rendered="#{dataBean.afterDate != null}"/>-->
 
         <div class="chart" style="display: #{empty dataBean.lastMetric ? 'none': 'block'}">
             <ct:chart id="lineChart" type="line" model="#{lineChartBean.lineChartModel}">

@@ -19,9 +19,10 @@ public class LineChartBean {
     private DataBean dataBean;
 
     private LineChartModel lineChartModel = null;
-    private LocalDateTime afterDate = null;
-    private LocalDateTime beforeDate = null;
+    private LocalDateTime afterDate;
+    private LocalDateTime beforeDate;
     private List<UserMetrics> userMetricsList = null;
+
 
     public void createLineModel() {
 
@@ -38,6 +39,11 @@ public class LineChartBean {
         lineChartSeries4.setName("Inbox SMS");
         LineChartSeries lineChartSeries5 = new LineChartSeries();
         lineChartSeries5.setName("Outbox SMS");
+
+        afterDate = dataBean.getAfterDate();
+        beforeDate = dataBean.getBeforeDate();
+//        afterDate = LocalDateTime.of(2018, 12, 7, 21, 2, 50);
+//        beforeDate = LocalDateTime.of(2018, 12, 8, 11, 47, 0);
 
         if (afterDate == null && beforeDate == null) {
             userMetricsList = dataBean.getUserMetrics();
@@ -90,21 +96,5 @@ public class LineChartBean {
                 + ", Series name:" +
                 ((ChartSeries) lineChartModel.getSeries().get(event.getSeriesIndex())).getName());
         FacesContext.getCurrentInstance().addMessage(event.getComponent().getClientId(), msg);
-    }
-
-    public LocalDateTime getAfterDate() {
-        return afterDate;
-    }
-
-    public void setAfterDate(LocalDateTime afterDate) {
-        this.afterDate = afterDate;
-    }
-
-    public LocalDateTime getBeforeDate() {
-        return beforeDate;
-    }
-
-    public void setBeforeDate(LocalDateTime beforeDate) {
-        this.beforeDate = beforeDate;
     }
 }
